@@ -24,26 +24,12 @@ public class ChessGame {
             if(chosingPosition == null){
                 clearScreen();
                 chessBoard.PrintChess();
-                char row;
-                int column;
+                int row;
+                char column;
                 int[] position = new int[2];
-                System.out.print("choose column (enter one character (a->h)): ");
-                row = scanner.next().charAt(0);
-                switch (row) {
-                    case 'a' -> position[0]=7;
-                    case 'b' -> position[0]=6;
-                    case 'c' -> position[0]=5;
-                    case 'd' -> position[0]=4;
-                    case 'e' -> position[0]=3;
-                    case 'f' -> position[0]=2;
-                    case 'g' -> position[0]=1;
-                    case 'h' -> position[0]=0;
-                    default -> position[0]=-1;
-                }
-                if(position[0]==-1) continue; 
                 System.out.print("choose row (enter one character (1->8)): ");
-                column = scanner.nextInt();
-                switch (column) {
+                row = scanner.nextInt();
+                switch (row) {
                     case 1 -> position[0]=7;
                     case 2 -> position[0]=6;
                     case 3 -> position[0]=5;
@@ -55,7 +41,22 @@ public class ChessGame {
                     default -> position[0]=-1;
                 }
                 if(position[0]==-1) continue; 
+                System.out.print("choose column (enter one character (a->h)): ");
+                column = scanner.next().charAt(0);
+                switch (column) {
+                    case 'a' -> position[1]=0;
+                    case 'b' -> position[1]=1;
+                    case 'c' -> position[1]=2;
+                    case 'd' -> position[1]=3;
+                    case 'e' -> position[1]=4;
+                    case 'f' -> position[1]=5;
+                    case 'g' -> position[1]=6;
+                    case 'h' -> position[1]=7;
+                    default -> position[1]=-1;
+                }
+                if(position[0]==-1) continue; 
                 chosingPosition = position;
+                System.out.println(position[0]+" "+position[1]);
                 List<int[]> validMove = chessBoard.getValidMove(position[0], position[1]);
                 System.out.print("valid moves is: ");
                 if (validMove!=null){

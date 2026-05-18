@@ -15,15 +15,20 @@ public class ChessBoard {
                                             {null,null,null,null,null,null,null,null},
                                             {new Pawn(true),new Pawn(true),new Pawn(true),new Pawn(true),new Pawn(true),new Pawn(true),new Pawn(true),new Pawn(true)},
                                             {null,null,null,null,null,null,null,null},
-                                            {null,null,null,null,null,null,null,null},
                                             };
     }
     public ChessBoard(Piece[][] editedChessBoard){
         this.chessMatrix = editedChessBoard;
     }
     public List<int[]> getValidMove(int row, int column){
-        if(chessMatrix[row][column]!=null) return chessMatrix[row][column].getValidMove(chessMatrix, new int[]{row, column});
-        else return null;
+        if(chessMatrix[row][column]!=null){
+            System.out.println(chessMatrix[row][column].getSympol());
+            return chessMatrix[row][column].getValidMove(chessMatrix, new int[]{row, column});
+        }
+        else{
+            System.out.println("this is a empty square");
+            return null;
+        }
     }
     public void PrintChess(){
         for(int i=0; i<=7; i++){

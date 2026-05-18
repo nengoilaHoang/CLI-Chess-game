@@ -8,7 +8,8 @@ public class Pawn extends Piece {
     @Override
     public List<int[]> getValidMove(Piece[][] board, int[] position) {
         List<int[]> validMove = new ArrayList<>();
-        if(this.isWhite()){
+        System.out.println(position[0]+" "+position[1]);
+        if(!this.isWhite()){
             if(position[0]==1){
                 validMove.add(new int[]{2,position[1]});
                 validMove.add(new int[]{3,position[1]});
@@ -46,7 +47,7 @@ public class Pawn extends Piece {
                 }
             }
         }
-        return null;
+        return validMove;
     }
 
     @Override
